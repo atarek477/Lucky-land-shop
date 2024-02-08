@@ -2,10 +2,14 @@ package com.ahmed.web;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 public class User {
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Product> products= new ArrayList<>();
 
     @Id
     @SequenceGenerator(name = "user_id_seq", sequenceName = "user_id_seq", allocationSize = 1)

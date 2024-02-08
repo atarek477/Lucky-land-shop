@@ -8,6 +8,16 @@ import java.util.Objects;
 @Entity
 public class Product {
 
+    @ManyToOne
+    @JoinColumn(
+            name = "user_id"
+            ,nullable =false
+            ,referencedColumnName = "id"
+            ,foreignKey = @ForeignKey(name = "user_product_fk")
+
+    )
+    private User user;
+
 
 
     @Id

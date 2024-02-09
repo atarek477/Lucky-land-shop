@@ -1,4 +1,4 @@
-package com.ahmed.web;
+package com.ahmed.web.model;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;

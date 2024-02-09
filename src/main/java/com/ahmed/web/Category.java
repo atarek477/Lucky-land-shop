@@ -48,6 +48,14 @@ public class Category {
         this.name = name;
     }
 
+    public Set<Product> getProductSet() {
+        return productSet;
+    }
+
+    public void setProductSet(Set<Product> productSet) {
+        this.productSet = productSet;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

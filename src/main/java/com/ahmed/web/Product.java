@@ -3,27 +3,18 @@ package com.ahmed.web;
 import jakarta.persistence.*;
 
 import java.math.BigInteger;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
+@Table(name = "product")
 public class Product {
 
-    @ManyToOne
-    @JoinColumn(
-            name = "user_id"
-            ,nullable =false
-            ,referencedColumnName = "id"
-            ,foreignKey = @ForeignKey(name = "user_product_fk")
-
-    )
-    private User user;
-
-
-
     @Id
-    @SequenceGenerator(name = "product_id_seq", sequenceName = "product_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_id_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
 
     @Column
     private  String name ;
@@ -33,6 +24,20 @@ public class Product {
     private String urlPicture;
     @Column
     private String description ;
+
+    @ManyToOne
+    @JoinColumn( name = "user_id",
+            nullable = false,
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(name = "user_product_fk")
+    )
+    private User user;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "product_category",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> categorySet = new HashSet<>();
     public Product() {
 
     }

@@ -2,23 +2,27 @@ package com.ahmed.web;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
+@Table(name = "category")
 public class Category {
 
-
-
-
-
-
     @Id
-    @SequenceGenerator(name = "category_id_seq", sequenceName = "category_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_id_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
 
     @Column
     private  String name ;
+
+
+    @ManyToMany(mappedBy = "categorySet")
+    private Set<Product> productSet = new HashSet<>();
+
+
     public Category() {
 
 

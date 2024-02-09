@@ -7,13 +7,12 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "\"user\"")
 public class User {
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Product> products= new ArrayList<>();
+
 
     @Id
-    @SequenceGenerator(name = "user_id_seq", sequenceName = "user_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column
@@ -27,7 +26,8 @@ public class User {
     private boolean isAdmin ;
     @Column
     private String number;
-
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Product> products = new ArrayList<>();
 
 
     public User() {

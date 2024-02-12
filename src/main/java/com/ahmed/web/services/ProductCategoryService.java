@@ -8,17 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-import java.util.Set;
 
 @Service
-public class PorductCategoryService {
+public class ProductCategoryService {
 
     @Autowired
     ProductRepository productRepository;
     @Autowired
     CategotyRepository categotyRepository;
 
-    public PorductCategoryService(ProductRepository productRepository, CategotyRepository categotyRepository) {
+    public ProductCategoryService(ProductRepository productRepository, CategotyRepository categotyRepository) {
         this.productRepository = productRepository;
         this.categotyRepository = categotyRepository;
     }
